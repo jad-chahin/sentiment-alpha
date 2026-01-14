@@ -1,0 +1,6 @@
+.env
+reddit_miner.db
+reports/
+__pycache__/
+.idea/
+.venv/
