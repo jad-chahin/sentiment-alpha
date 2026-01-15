@@ -51,5 +51,5 @@ python main.py
 --validate flag: verify all tickers at the end using Yahoo Finance information
 ```
 
-***You will need to create a reddit client [here](https://www.reddit.com/prefs/apps)***
+***You will need to create a reddit client [here](https://www.reddit.com/prefs/apps)***.
 ***You NEED OpenAI API access as of v1.0***
