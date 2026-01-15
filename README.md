@@ -1,6 +1,6 @@
 # sentiment-alpha
 
-Pulls data (e.g., from Reddit), processes it, and produces sentiment/report outputs.
+Pulls data (from Reddit), processes it, and produces sentiment/report outputs.
 
 ## Prerequisites
 
