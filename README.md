@@ -1,6 +1,6 @@
 # sentiment-alpha
 
-Pulls data (e.g., from Reddit), processes it, and produces sentiment/report outputs.
+Pulls data (from Reddit), processes it, and produces sentiment/report outputs.
 
 ## Prerequisites
 
@@ -51,5 +51,5 @@ python main.py
 --validate flag: verify all tickers at the end using Yahoo Finance information
 ```
 
-***You will need to create a reddit client [here](https://www.reddit.com/prefs/apps)***
-***You NEED OpenAI API access as of v1.0 but that is changing in the next version***
+***You will need to create a reddit client [here](https://www.reddit.com/prefs/apps)***.
+***You NEED OpenAI API access as of v1.0***.
