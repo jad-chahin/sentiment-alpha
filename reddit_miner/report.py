@@ -170,8 +170,7 @@ def print_report_rich(
 
     display_rows = rows_list[: max(0, int(n_to_show))]
 
-    lines: list[str] = []
-    lines.append("=== Run Summary ===")
+    lines: list[str] = ["=== Run Summary ==="]
     lines.extend(_summary_lines(summary))
     lines.append("")
     lines.append(f"=== Top {len(display_rows)} tickers ===")

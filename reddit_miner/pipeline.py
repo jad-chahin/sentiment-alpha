@@ -32,6 +32,10 @@ def _should_abort() -> bool:
     ch = msvcrt.getch()
     return ch in (b"q", b"Q")
 
+def _abort_if_requested() -> None:
+    if _should_abort():
+        raise KeyboardInterrupt
+
 @dataclass
 class AnalyzeOutcome:
     analyzed: int = 0
@@ -144,8 +148,7 @@ def scrape(
 
     try:
         for sub in subreddits:
-            if _should_abort():
-                raise KeyboardInterrupt
+            _abort_if_requested()
             sr = reddit.subreddit(sub)
 
             if listing == "new":
@@ -158,8 +161,7 @@ def scrape(
                 feed = sr.hot(limit=post_limit)
 
             for submission in feed:
-                if _should_abort():
-                    raise KeyboardInterrupt
+                _abort_if_requested()
                 try:
                     submission.comments.replace_more(limit=more_limit)
                     comments = submission.comments.list()
@@ -169,8 +171,7 @@ def scrape(
                 take = comments[:max_comments_per_post] if max_comments_per_post else comments
 
                 for c in take:
-                    if _should_abort():
-                        raise KeyboardInterrupt
+                    _abort_if_requested()
                     try:
                         author = getattr(c, "author", None)
                         author_name = str(author) if author else None
@@ -276,8 +277,7 @@ def analyze(
 
     try:
         for idx, (comment_id, body) in enumerate(candidates, start=1):
-            if _should_abort():
-                raise KeyboardInterrupt
+            _abort_if_requested()
             if deadline is not None and _now() >= deadline:
                 outcome.stopped_reason = "timeout"
                 conn.commit()
@@ -300,8 +300,7 @@ def analyze(
 
             attempt = 0
             while True:
-                if _should_abort():
-                    raise KeyboardInterrupt
+                _abort_if_requested()
                 if deadline is not None and _now() >= deadline:
                     outcome.stopped_reason = "timeout"
                     conn.commit()
